@@ -11,6 +11,7 @@ config({ path: ".env" });
 app.use(
   cors({
     origin: ["https://shz-chat-app.netlify.app", "http://localhost:5173"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
