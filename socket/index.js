@@ -31,7 +31,7 @@ io.on("connection", async (socket) => {
       name: receiver?.name,
       email: receiver?.email,
       profile_pic: receiver?.profile_pic,
-      isOnline: onlineUser.has(data.toString()),
+      isOnline: onlineUser.has(data?.toString()),
     };
     socket.emit("receiver-details", payload);
   });
@@ -76,7 +76,7 @@ io.on("connection", async (socket) => {
     });
     const savedMessage = await message.save();
     const updatedConversation = await conversationModel.updateOne(
-      { _id: conversation._id },
+      { _id: conversation?._id },
       {
         $push: { messages: savedMessage?._id },
       }
